@@ -5,3 +5,5 @@ sqlalchemy
 python-jose[cryptography] 
 passlib[bcrypt] 
 fastapi[all]
+jwt
+jose
