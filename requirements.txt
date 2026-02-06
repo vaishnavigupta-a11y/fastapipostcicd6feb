@@ -8,3 +8,5 @@ fastapi[all]
 jwt
 jose
 pytest
+# psycogpg2
+psycopg2-binary
