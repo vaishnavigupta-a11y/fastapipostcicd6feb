@@ -1,0 +1,33 @@
+name: FastAPI CI
+
+# When will the pipeline run?
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Code checkout
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup Python
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # 3️⃣ Install dependencies
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+
+      # 4️⃣ Run tests
+      - name: Run Tests
+        run: |
+          pytest -v
