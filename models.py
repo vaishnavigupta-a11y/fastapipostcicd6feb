@@ -41,6 +41,13 @@ from database import Base
 
 
 # Without Base, SQLAlchemy won’t know Item is a table
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, index=True)
+    email = Column(String, unique=True, index=True)
+    password = Column(String)
 
 
 class Item(Base):

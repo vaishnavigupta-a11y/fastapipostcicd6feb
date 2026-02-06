@@ -79,3 +79,23 @@ class ItemResponse(BaseModel):
 # to te line ye batati ai ki pydnatic tum obejct ke st bhi deal kro
     class Config:
         orm_mode = True
+
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
+
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+
+    class Config:
+        orm_mode = True
+
