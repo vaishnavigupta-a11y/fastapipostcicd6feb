@@ -1,9 +1,14 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fastapi.testclient import TestClient
 from main import app
 from database import get_db
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base
+
 
 # -------------------------------
 # 1️⃣ Create Test Database (SQLite)
