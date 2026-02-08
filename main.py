@@ -458,7 +458,10 @@ def get_item(
         raise HTTPException(status_code=404, detail="Item not found")
     return item
 
-
+@app.get("/")
+def home():
+    return {"message": "Welcome to the API!"}
+ 
 @app.put("/items/{item_id}")
 def update_item(
     item_id: int,
