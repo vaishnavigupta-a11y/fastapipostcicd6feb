@@ -1,25 +1,25 @@
-# sqlalchemy
-# fastapi
-# uvicorn
-# sqlalchemy
-# python-jose[cryptography] 
-# # passlib[bcrypt] 
-# fastapi[all]
-# jwt
-# jose
-# pytest
-# # psycogpg2
-# # psycopg2-binary
-# psycopg2-binary
-# bcrypt==3.2.2
-# passlib[bcrypt] >= 1.7.4
-fastapi
-uvicorn[standard]
 sqlalchemy
-python-jose[cryptography]
-passlib[bcrypt]==1.7.4
-bcrypt==3.2.2
-psycopg2-binary
+fastapi
+uvicorn
+sqlalchemy
+python-jose[cryptography] 
+# passlib[bcrypt] 
+fastapi[all]
+jwt
+jose
 pytest
+# psycogpg2
+# psycopg2-binary
+psycopg2-binary
+bcrypt==3.2.2
+passlib[bcrypt] >= 1.7.4
+# fastapi
+# uvicorn[standard]
+# sqlalchemy
+# python-jose[cryptography]
+# passlib[bcrypt]==1.7.4
+# bcrypt==3.2.2
+# psycopg2-binary
+# pytest
 
 
