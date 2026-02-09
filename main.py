@@ -460,7 +460,7 @@ def get_item(
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the API!"}
+    return {"message": "yuhu!!,Welcome to the API!"}
  
 @app.put("/items/{item_id}")
 def update_item(
