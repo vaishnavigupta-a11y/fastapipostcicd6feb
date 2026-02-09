@@ -32,65 +32,93 @@
 #         run: |
 #           pytest
 
-name: FASTAPI CI-CD
+
+
+# name: FASTAPI CI-CD
+
+# on:
+#   push:
+#     branches: ["main"]
+
+# jobs:
+#   ci-cd:
+    # runs-on: ubuntu-latest
+
+    # steps:
+    #   # 1️⃣ Pull your project
+    #   - name: Checkout code
+    #     uses: actions/checkout@v3
+
+    #   # 2️⃣ install python
+    #   - name: Setup Python
+    #     uses: actions/setup-python@v4
+    #     with:
+          # python-version: "3.10"
+
+      # # 3️⃣ install depend
+      # - name: Install dependencies
+      #   run: pip install -r requirements.txt
+
+      # # 4️⃣ run pytest
+      # - name: Run Tests
+      #   run: pytest
+
+      # # 5️⃣ build docker image
+      # - name: Build Docker image
+      #   run: docker build -t fastapi-app .
+
+      # 6️⃣ save docker image into file
+      # - name: Save Docker image
+      #   run: docker save fastapi-app -o fastapi-app.tar
+
+      # # 7️⃣ copy docker image to server
+      # - name: Upload image to server
+      #   uses: appleboy/scp-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.SERVER_IP }}
+      #     username: ${{ secrets.SERVER_USER }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
+      #     source: "fastapi-app.tar"
+      #     target: "~/"
+
+      # # 8️⃣ run docker image on server (deploy)
+      # - name: Deploy on server
+      #   uses: appleboy/ssh-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.SERVER_IP }}
+      #     username: ${{ secrets.SERVER_USER }}
+      #     key: ${{ secrets.SERVER_SSH_KEY }}
+      #     script: |
+      #       docker load -i fastapi-app.tar
+      #       docker stop fastapi-api || true
+      #       docker rm fastapi-api || true
+      #       docker run -d -p 8000:8000 fastapi-app --name fastapi-api
+
+name: FastAPI CI
 
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-  ci-cd:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Pull your project
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2️⃣ install python
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      # 3️⃣ install depend
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 4️⃣ run pytest
       - name: Run Tests
         run: pytest
 
-      # 5️⃣ build docker image
-      - name: Build Docker image
-        run: docker build -t fastapi-app .
-
-      # 6️⃣ save docker image into file
-      - name: Save Docker image
-        run: docker save fastapi-app -o fastapi-app.tar
-
-      # 7️⃣ copy docker image to server
-      - name: Upload image to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          source: "fastapi-app.tar"
-          target: "~/"
-
-      # 8️⃣ run docker image on server (deploy)
-      - name: Deploy on server
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            docker load -i fastapi-app.tar
-            docker stop fastapi-api || true
-            docker rm fastapi-api || true
-            docker run -d -p 8000:8000 fastapi-app --name fastapi-api
-
-            
 
