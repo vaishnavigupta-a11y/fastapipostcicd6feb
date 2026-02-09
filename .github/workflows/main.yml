@@ -92,3 +92,5 @@ jobs:
             docker rm fastapi-api || true
             docker run -d -p 8000:8000 fastapi-app --name fastapi-api
 
+            
+
