@@ -50,10 +50,17 @@
 
 
 from fastapi import FastAPI, Depends, HTTPException, status
+
+
+
 # 1)OAuth2PasswordRequestForm classhoti hai fatsapi me automatic userne jo login passowrd dla hai usse reda krne ke liye hoi hI
 # Depends() tells FastAPI: “Use OAuth2PasswordRequestForm to read login data”
 # OAuth2PasswordRequestForm helps FastAPI automatically read the username and password when a user logs in.
+
 from fastapi.security import OAuth2PasswordRequestForm
+
+
+
 # 1)Session = Database se baat karne ka tool jisse hum data read, write, update, delete karte hain.
 # sqlarcahemy - linrry hoti hai dbs e baat krne ke liye python us ekrta hai
 # orm -baiscally object rletainal manager ptthon obje ko databse table ya vise versa tarsnalt map krne ke liye us ehota hai
